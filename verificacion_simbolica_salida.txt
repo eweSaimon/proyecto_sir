@@ -1,0 +1,61 @@
+1) Conservación: d(S+I+R)/dt = 0
+
+2) Jacobiano J(S,I,R):
+⎡-I⋅β⋅(1 - u)    -S⋅β⋅(1 - u)      ⎤
+⎢─────────────   ─────────────    0⎥
+⎢      N               N           ⎥
+⎢                                  ⎥
+⎢ I⋅β⋅(1 - u)        S⋅β⋅(1 - u)   ⎥
+⎢ ───────────   -γ + ───────────  0⎥
+⎢      N                  N        ⎥
+⎢                                  ⎥
+⎣      0               γ          0⎦
+   Vector propio izquierdo (1,1,1):  (1,1,1)·J = Matrix([[0, 0, 0]])
+
+3) J(E0), E0 = (N,0,0):
+⎡0   β⋅(u - 1)    0⎤
+⎢                  ⎥
+⎢0  -β⋅u + β - γ  0⎥
+⎢                  ⎥
+⎣0       γ        0⎦
+   Valores propios: {-beta*u + beta - gamma: 1, 0: 2}
+   Polinomio característico: lambda**2*(beta*u - beta + gamma + lambda)
+   Espacio nulo de J(E0): [[1, 0, 0], [0, 0, 1]]
+   -> dimensión del núcleo = 2 (multiplicidad algebraica de 0 = 2): una dirección tangente a la familia de equilibrios y otra que sale del plano S+I+R=N
+
+4) J en equilibrio genérico (S_e, 0, R_e):
+⎡      Sₑ⋅β⋅(u - 1)       ⎤
+⎢0     ────────────      0⎥
+⎢           N             ⎥
+⎢                         ⎥
+⎢   -N⋅γ - Sₑ⋅β⋅(u - 1)   ⎥
+⎢0  ───────────────────  0⎥
+⎢            N            ⎥
+⎢                         ⎥
+⎣0           γ           0⎦
+   Polinomio característico: lambda**2*(N*gamma + N*lambda + S_e*beta*u - S_e*beta)/N
+   Valores propios: 0, 0, (1-u)*beta*S_e/N - gamma  (estabilidad transversal si S_e/N < gamma/((1-u)beta))
+
+5) Sistema reducido 2D (S,I) en E0:
+⎡0   -β⋅(1 - u)  ⎤
+⎢                ⎥
+⎣0  β⋅(1 - u) - γ⎦
+   Valores propios: {-beta*u + beta - gamma: 1, 0: 1}
+
+6) Pico: dI/dt=0 con I>0 => [-N*gamma/(beta*(u - 1))]
+
+7) dI/dS = (-N*gamma - S*beta*(u - 1))/(S*beta*(u - 1))  =  (-N*gamma - S*beta*(u - 1))/(S*beta*(u - 1))
+   Integral:  I(S) = (-N*gamma*log(S) - S*(beta*u - beta))/(beta*u - beta) + C
+   d/dt [ I + S - (gamma N/beta_ef) ln S ] = 0
+
+8) R0(u) = beta*(1 - u)/gamma | R0(u)=1 ->  u* = [(beta - gamma)/beta]
+   u = 0: R0 = 3 = 3.0
+   u = 1/2: R0 = 3/2 = 1.5
+   u = 4/5: R0 = 3/5 = 0.6
+   u* con parametros base = [2/3]
+   Umbral exacto de decrecimiento inicial con S(0)=990: u = 197/297 = 0.663300
+
+9) Pico teórico (u=0): S* = 1000/3 = 333.3333; I_max = 303.812682
+   Pico teórico (u=0.5): S* = 666.6667; I_max = 69.723485
+
+Verificación simbólica terminada.

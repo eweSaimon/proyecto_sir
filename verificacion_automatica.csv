@@ -1,0 +1,48 @@
+﻿verificacion,escenario,esperado,obtenido,resultado
+solve_ivp terminó correctamente,A. Sin intervención,success=True,The solver successfully reached the end of the integration interval.,OK
+Conservación S+I+R=N (max |error|),A. Sin intervención,< 1e-12 * N = 1.0e-09,9.09e-13,OK
+Poblaciones no negativas (mínimo),A. Sin intervención,>= -1e-9 * N = -1.0e-06,0.00e+00,OK
+S(t) no creciente y R(t) no decreciente,A. Sin intervención,True,True,OK
+R0 efectivo (valor del proyecto),A. Sin intervención,3.0,3.000000,OK
+Tasa de crecimiento inicial d(ln I)/dt (num vs. teor),A. Sin intervención,0.19700,0.19700,OK
+Reff(0) > 1  =>  I crece inicialmente,A. Sin intervención,I_pico > I(0),303.8127,OK
+Pico de I: numérico vs. teórico (error relativo),A. Sin intervención,< 1e-5,1.66e-09,OK
+En el pico S = gamma N / beta_ef (error relativo),A. Sin intervención,< 1e-5,1.71e-16,OK
+Integral primera I+S-S* ln S constante (variación relativa),A. Sin intervención,< 1e-6,1.17e-09,OK
+S(inf) (Lambert W) satisface la ecuación del tamaño final (|residuo|),A. Sin intervención,< 1e-8 * N,1.14e-13,OK
+Brecha S(tmax) - S(inf) teórico (informativo),A. Sin intervención,-,"0.3334 (I(tmax)=1.5512; S(tmax)=59.13, S(inf)=58.80)",INFO
+solve_ivp terminó correctamente,B. Intervención moderada,success=True,The solver successfully reached the end of the integration interval.,OK
+Conservación S+I+R=N (max |error|),B. Intervención moderada,< 1e-12 * N = 1.0e-09,2.27e-13,OK
+Poblaciones no negativas (mínimo),B. Intervención moderada,>= -1e-9 * N = -1.0e-06,0.00e+00,OK
+S(t) no creciente y R(t) no decreciente,B. Intervención moderada,True,True,OK
+R0 efectivo (valor del proyecto),B. Intervención moderada,1.5,1.500000,OK
+Tasa de crecimiento inicial d(ln I)/dt (num vs. teor),B. Intervención moderada,0.04850,0.04850,OK
+Reff(0) > 1  =>  I crece inicialmente,B. Intervención moderada,I_pico > I(0),69.7235,OK
+Pico de I: numérico vs. teórico (error relativo),B. Intervención moderada,< 1e-5,3.56e-10,OK
+En el pico S = gamma N / beta_ef (error relativo),B. Intervención moderada,< 1e-5,1.71e-16,OK
+Integral primera I+S-S* ln S constante (variación relativa),B. Intervención moderada,< 1e-6,2.41e-10,OK
+S(inf) (Lambert W) satisface la ecuación del tamaño final (|residuo|),B. Intervención moderada,< 1e-8 * N,0.00e+00,OK
+Brecha S(tmax) - S(inf) teórico (informativo),B. Intervención moderada,-,"84.1635 (I(tmax)=41.3241; S(tmax)=490.53, S(inf)=406.37)",INFO
+solve_ivp terminó correctamente,C. Intervención intensiva,success=True,The solver successfully reached the end of the integration interval.,OK
+Conservación S+I+R=N (max |error|),C. Intervención intensiva,< 1e-12 * N = 1.0e-09,4.55e-13,OK
+Poblaciones no negativas (mínimo),C. Intervención intensiva,>= -1e-9 * N = -1.0e-06,0.00e+00,OK
+S(t) no creciente y R(t) no decreciente,C. Intervención intensiva,True,True,OK
+R0 efectivo (valor del proyecto),C. Intervención intensiva,0.6,0.600000,OK
+Tasa de crecimiento inicial d(ln I)/dt (num vs. teor),C. Intervención intensiva,-0.04060,-0.04060,OK
+Reff(0) <= 1  =>  I decrece desde t=0,C. Intervención intensiva,I monótona decreciente,True,OK
+Integral primera I+S-S* ln S constante (variación relativa),C. Intervención intensiva,< 1e-6,1.54e-14,OK
+S(inf) (Lambert W) satisface la ecuación del tamaño final (|residuo|),C. Intervención intensiva,< 1e-8 * N,1.46e-13,OK
+Brecha S(tmax) - S(inf) teórico (informativo),C. Intervención intensiva,-,"0.2281 (I(tmax)=0.1615; S(tmax)=975.86, S(inf)=975.63)",INFO
+u* = 1 - gamma/beta,umbral,0.666667,0.666667,OK
+Umbral exacto u_e = 1 - gamma N/(beta S0) <= u*,umbral,<= 0.666667,0.663300,OK
+u = u*+0.02 = 0.6867: no hay brote (I monótona decreciente),umbral,True,True,OK
+u = u_e-0.02 = 0.6433: hay brote (I supera I(0)),umbral,True,pico=11.59,OK
+CSV releído coincide con los datos en memoria,archivos,True,True,OK
+PNG generado: grafica_susceptibles.png,archivos,existe y > 1 KB,105043 bytes,OK
+PNG generado: grafica_infectados.png,archivos,existe y > 1 KB,124034 bytes,OK
+PNG generado: grafica_recuperados.png,archivos,existe y > 1 KB,103685 bytes,OK
+PNG generado: grafica_comparacion_escenarios.png,archivos,existe y > 1 KB,163837 bytes,OK
+PNG generado: grafica_plano_fase_SI.png,archivos,existe y > 1 KB,131695 bytes,OK
+PNG generado: grafica_conservacion.png,archivos,existe y > 1 KB,82566 bytes,OK
+PNG generado: grafica_sensibilidad.png,archivos,existe y > 1 KB,207622 bytes,OK
+PNG generado: grafica_barrido_intervencion.png,archivos,existe y > 1 KB,163706 bytes,OK

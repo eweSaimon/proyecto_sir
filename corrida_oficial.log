@@ -1,0 +1,63 @@
+==============================================================================
+SIMULACIÓN SIR DE PROPAGACIÓN DE MALWARE (parámetros HIPOTÉTICOS, no reales)
+==============================================================================
+N = 1000 | I(0) = 10 | S(0) = 990 | R(0) = 0 | beta = 0.3 | gamma = 0.1 | tmax = 100 días
+R0 base = beta/gamma = 3.0000 | umbral u* = 1 - gamma/beta = 0.6667
+
+--- RESUMEN DE ESCENARIOS ---
+                escenario    u  R0_efectivo  pico_I_numerico  dia_pico  S_en_tmax  R_en_tmax  S_inf_teorico  tasa_ataque_asintotica_pct
+      A. Sin intervención 0.00         3.00           303.81     26.63      59.13     939.32          58.80                       94.12
+ B. Intervención moderada 0.50         1.50            69.72     65.14     490.53     468.15         406.37                       59.36
+C. Intervención intensiva 0.80         0.60            10.00      0.00     975.86      23.98         975.63                        2.44
+
+--- VERIFICACIONES AUTOMÁTICAS ---
+[OK   ] A. Sin intervención          solve_ivp terminó correctamente  (esperado: success=True | obtenido: The solver successfully reached the end of the integration interval.)
+[OK   ] A. Sin intervención          Conservación S+I+R=N (max |error|)  (esperado: < 1e-12 * N = 1.0e-09 | obtenido: 9.09e-13)
+[OK   ] A. Sin intervención          Poblaciones no negativas (mínimo)  (esperado: >= -1e-9 * N = -1.0e-06 | obtenido: 0.00e+00)
+[OK   ] A. Sin intervención          S(t) no creciente y R(t) no decreciente  (esperado: True | obtenido: True)
+[OK   ] A. Sin intervención          R0 efectivo (valor del proyecto)  (esperado: 3.0 | obtenido: 3.000000)
+[OK   ] A. Sin intervención          Tasa de crecimiento inicial d(ln I)/dt (num vs. teor)  (esperado: 0.19700 | obtenido: 0.19700)
+[OK   ] A. Sin intervención          Reff(0) > 1  =>  I crece inicialmente  (esperado: I_pico > I(0) | obtenido: 303.8127)
+[OK   ] A. Sin intervención          Pico de I: numérico vs. teórico (error relativo)  (esperado: < 1e-5 | obtenido: 1.66e-09)
+[OK   ] A. Sin intervención          En el pico S = gamma N / beta_ef (error relativo)  (esperado: < 1e-5 | obtenido: 1.71e-16)
+[OK   ] A. Sin intervención          Integral primera I+S-S* ln S constante (variación relativa)  (esperado: < 1e-6 | obtenido: 1.17e-09)
+[OK   ] A. Sin intervención          S(inf) (Lambert W) satisface la ecuación del tamaño final (|residuo|)  (esperado: < 1e-8 * N | obtenido: 1.14e-13)
+[INFO ] A. Sin intervención          Brecha S(tmax) - S(inf) teórico (informativo)  (esperado: - | obtenido: 0.3334 (I(tmax)=1.5512; S(tmax)=59.13, S(inf)=58.80))
+[OK   ] B. Intervención moderada     solve_ivp terminó correctamente  (esperado: success=True | obtenido: The solver successfully reached the end of the integration interval.)
+[OK   ] B. Intervención moderada     Conservación S+I+R=N (max |error|)  (esperado: < 1e-12 * N = 1.0e-09 | obtenido: 2.27e-13)
+[OK   ] B. Intervención moderada     Poblaciones no negativas (mínimo)  (esperado: >= -1e-9 * N = -1.0e-06 | obtenido: 0.00e+00)
+[OK   ] B. Intervención moderada     S(t) no creciente y R(t) no decreciente  (esperado: True | obtenido: True)
+[OK   ] B. Intervención moderada     R0 efectivo (valor del proyecto)  (esperado: 1.5 | obtenido: 1.500000)
+[OK   ] B. Intervención moderada     Tasa de crecimiento inicial d(ln I)/dt (num vs. teor)  (esperado: 0.04850 | obtenido: 0.04850)
+[OK   ] B. Intervención moderada     Reff(0) > 1  =>  I crece inicialmente  (esperado: I_pico > I(0) | obtenido: 69.7235)
+[OK   ] B. Intervención moderada     Pico de I: numérico vs. teórico (error relativo)  (esperado: < 1e-5 | obtenido: 3.56e-10)
+[OK   ] B. Intervención moderada     En el pico S = gamma N / beta_ef (error relativo)  (esperado: < 1e-5 | obtenido: 1.71e-16)
+[OK   ] B. Intervención moderada     Integral primera I+S-S* ln S constante (variación relativa)  (esperado: < 1e-6 | obtenido: 2.41e-10)
+[OK   ] B. Intervención moderada     S(inf) (Lambert W) satisface la ecuación del tamaño final (|residuo|)  (esperado: < 1e-8 * N | obtenido: 0.00e+00)
+[INFO ] B. Intervención moderada     Brecha S(tmax) - S(inf) teórico (informativo)  (esperado: - | obtenido: 84.1635 (I(tmax)=41.3241; S(tmax)=490.53, S(inf)=406.37))
+[OK   ] C. Intervención intensiva    solve_ivp terminó correctamente  (esperado: success=True | obtenido: The solver successfully reached the end of the integration interval.)
+[OK   ] C. Intervención intensiva    Conservación S+I+R=N (max |error|)  (esperado: < 1e-12 * N = 1.0e-09 | obtenido: 4.55e-13)
+[OK   ] C. Intervención intensiva    Poblaciones no negativas (mínimo)  (esperado: >= -1e-9 * N = -1.0e-06 | obtenido: 0.00e+00)
+[OK   ] C. Intervención intensiva    S(t) no creciente y R(t) no decreciente  (esperado: True | obtenido: True)
+[OK   ] C. Intervención intensiva    R0 efectivo (valor del proyecto)  (esperado: 0.6 | obtenido: 0.600000)
+[OK   ] C. Intervención intensiva    Tasa de crecimiento inicial d(ln I)/dt (num vs. teor)  (esperado: -0.04060 | obtenido: -0.04060)
+[OK   ] C. Intervención intensiva    Reff(0) <= 1  =>  I decrece desde t=0  (esperado: I monótona decreciente | obtenido: True)
+[OK   ] C. Intervención intensiva    Integral primera I+S-S* ln S constante (variación relativa)  (esperado: < 1e-6 | obtenido: 1.54e-14)
+[OK   ] C. Intervención intensiva    S(inf) (Lambert W) satisface la ecuación del tamaño final (|residuo|)  (esperado: < 1e-8 * N | obtenido: 1.46e-13)
+[INFO ] C. Intervención intensiva    Brecha S(tmax) - S(inf) teórico (informativo)  (esperado: - | obtenido: 0.2281 (I(tmax)=0.1615; S(tmax)=975.86, S(inf)=975.63))
+[OK   ] umbral                       u* = 1 - gamma/beta  (esperado: 0.666667 | obtenido: 0.666667)
+[OK   ] umbral                       Umbral exacto u_e = 1 - gamma N/(beta S0) <= u*  (esperado: <= 0.666667 | obtenido: 0.663300)
+[OK   ] umbral                       u = u*+0.02 = 0.6867: no hay brote (I monótona decreciente)  (esperado: True | obtenido: True)
+[OK   ] umbral                       u = u_e-0.02 = 0.6433: hay brote (I supera I(0))  (esperado: True | obtenido: pico=11.59)
+[OK   ] archivos                     CSV releído coincide con los datos en memoria  (esperado: True | obtenido: True)
+[OK   ] archivos                     PNG generado: grafica_susceptibles.png  (esperado: existe y > 1 KB | obtenido: 105043 bytes)
+[OK   ] archivos                     PNG generado: grafica_infectados.png  (esperado: existe y > 1 KB | obtenido: 124034 bytes)
+[OK   ] archivos                     PNG generado: grafica_recuperados.png  (esperado: existe y > 1 KB | obtenido: 103685 bytes)
+[OK   ] archivos                     PNG generado: grafica_comparacion_escenarios.png  (esperado: existe y > 1 KB | obtenido: 163837 bytes)
+[OK   ] archivos                     PNG generado: grafica_plano_fase_SI.png  (esperado: existe y > 1 KB | obtenido: 131695 bytes)
+[OK   ] archivos                     PNG generado: grafica_conservacion.png  (esperado: existe y > 1 KB | obtenido: 82566 bytes)
+[OK   ] archivos                     PNG generado: grafica_sensibilidad.png  (esperado: existe y > 1 KB | obtenido: 207622 bytes)
+[OK   ] archivos                     PNG generado: grafica_barrido_intervencion.png  (esperado: existe y > 1 KB | obtenido: 163706 bytes)
+
+Resumen de verificaciones: 44 OK, 3 informativas, 0 fallas.
+Archivos escritos en: /home/claude/proyecto_sir

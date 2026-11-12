@@ -1,0 +1,4 @@
+﻿escenario,u,R0_efectivo,Reff_inicial,pico_I_numerico,pico_I_teorico,dia_pico,tipo_pico,S_en_pico,S_umbral_teorico,S_en_tmax,I_en_tmax,R_en_tmax,S_inf_teorico,R_inf_teorico,tasa_ataque_asintotica_pct
+A. Sin intervención,0,3,2.97,303.8126819,303.8126824,26.63258003,interior,333.3333333,333.3333333,59.13072869,1.551201509,939.3180698,58.7973648,941.2026352,94.12026352
+B. Intervención moderada,0.5,1.5,1.485,69.72348514,69.72348516,65.14075506,interior,666.6666667,666.6666667,490.529237,41.3240567,468.1467063,406.3657,593.6343,59.36343
+C. Intervención intensiva,0.8,0.6,0.594,10,10,0,decreciente,990,1666.666667,975.8569864,0.1615172964,23.98149631,975.6288869,24.37111311,2.437111311
